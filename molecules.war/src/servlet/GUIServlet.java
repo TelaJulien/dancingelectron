@@ -43,10 +43,10 @@ public class GUIServlet extends HttpServlet implements OnMessageReceived {
 		super();
 
 		// creation de la file de messages
-		messagesManager = new MessagesManager();
-		messagesManager.setMessageListener(this);
-
-		management = new HashMap<String, ThreadRequestCouple>();
+//		messagesManager = new MessagesManager();
+//		messagesManager.setMessageListener(this);
+//
+//		management = new HashMap<String, ThreadRequestCouple>();
 
 	}
 

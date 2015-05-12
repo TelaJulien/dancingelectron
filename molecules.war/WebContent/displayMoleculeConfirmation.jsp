@@ -34,7 +34,7 @@
 				<ul class="nav nav-justified">
 					<li><a href="menu.jsp">Home</a></li>
 					<li><a href="createMolecule.jsp">Create Molecule</a></li>
-					<li><a href="displayMolecule.jsp">Display Molecules</a></li>
+					<li><a href="#">Display Molecules</a></li>
 
 					<li><a href="about.jsp">About</a></li>
 				</ul>

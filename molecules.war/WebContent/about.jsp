@@ -1,5 +1,11 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="internationalisation.text" />
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${language}">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,6 +27,13 @@
 <body>
 
 	<div class="container">
+	
+	<form>
+            <select id="language" name="language" onchange="submit()">
+            	<option value="fr" ${language == 'fr' ? 'selected' : ''}>Fran√ßais</option>
+                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+            </select>
+        </form>
 
 		<!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
@@ -40,11 +53,11 @@
 
 		<div class="well">
 			
-			<p class="lead">This application was designed for the PDS of the MIAGE's Master 1 of CrÈteil</p>
+			<p class="lead">This application was designed for the PDS of the MIAGE's Master 1 of Cr√©teil</p>
 		</div>
 			<div class="well">
 			
-			<p class="lead">The team : ClÈment CARREAU, Daria RYAZANTSEVA and Julien TELA</p>
+			<p class="lead">The team : Cl√©ment CARREAU, Daria RYAZANTSEVA and Julien TELA</p>
 		</div>
 
 		<!-- Site footer -->

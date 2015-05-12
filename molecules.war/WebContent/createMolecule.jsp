@@ -2,8 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.Timestamp"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="internationalisation.text" />
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${language}">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,6 +67,13 @@
 <body>
 
 	<div class="container">
+	
+	<form>
+            <select id="language" name="language" onchange="submit()">
+            	<option value="fr" ${language == 'fr' ? 'selected' : ''}>Français</option>
+                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+            </select>
+        </form>
 
 		<!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->

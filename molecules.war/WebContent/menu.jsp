@@ -1,5 +1,11 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="internationalisation.text" />
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${language}">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,8 +25,16 @@
 </head>
 
 <body>
+ 
 
 	<div class="container">
+
+ 		<form>
+            <select id="language" name="language" onchange="submit()">
+            	<option value="fr" ${language == 'fr' ? 'selected' : ''}>Français</option>
+                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+            </select>
+        </form>
 
 		<!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
@@ -30,20 +44,20 @@
 			<nav>
 				<ul class="nav nav-justified">
 					<li><a href="#">Home</a></li>
-					<li><a href="createMolecule.jsp">Create Molecule</a></li>
-					<li><a href="displayMoleculeConfirmation.jsp">Display Molecules</a></li>
+					<li><label for="createMolecule"><a href="createMolecule.jsp"><fmt:message key="createMolecule" /></a></label></li>
+					<li><label for="displayMolecule"><a href="displayMoleculeConfirmation.jsp"><fmt:message key="displayMolecule" /></a></label></li>
 	
-					<li><a href="about.jsp">About</a></li>
+					<li><label for="about"><a href="about.jsp"><fmt:message key="about" /></a></label></li>
 				</ul>
 			</nav>
 		</div>
 
 		<!-- Jumbotron -->
 		<div class="jumbotron">
-			<h1>Become a chemist</h1>
-			<p class="lead">Thanks to this application you can keep your favorite molecules safe.</p>
+			<h1><label for="becomeAChemist"><fmt:message key="becomeAChemist" /></label></h1>
+			<p class="lead"><label for="messageMenu"><fmt:message key="messageMenu" /></label></p>
 			<p>
-				<a class="btn btn-lg btn-primary" href="createMolecule.jsp" role="button">Create molecule today</a>
+				<label for="createMoleculeToday"><a class="btn btn-lg btn-primary" href="createMolecule.jsp" role="button"><fmt:message key="createMoleculeToday" /></a></label>
 			</p>
 		</div>
 
