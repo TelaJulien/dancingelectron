@@ -1,7 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="internationalisation.text" />
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${language}">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,31 +28,35 @@
 <body>
 
 	<div class="container">
+	
+		<form>
+            <select id="language" name="language" onchange="submit()">
+            	<option value="fr" ${language == 'fr' ? 'selected' : ''}>Français</option>
+                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+            </select>
+        </form>
 
 		<!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
 		<div class="masthead">
 			<h3 class="text-muted">Dancing Electron</h3>
-			<h4 class="text-muted">Display Molecule</h4>
+			<h4 class="text-muted"><fmt:message key="displayMolecule" /></h4>
 			<nav>
 				<ul class="nav nav-justified">
 					<li><a href="menu.jsp">Home</a></li>
-					<li><a href="createMolecule.jsp">Create Molecule</a></li>
-					<li><a href="#">Display Molecules</a></li>
-
-					<li><a href="about.jsp">About</a></li>
+					<li><label for="createMolecule"><a href="createMolecule.jsp"><fmt:message key="createMolecule" /></a></label></li>
+					<li><label for="displayMolecule"><a href="#"><fmt:message key="displayMolecule" /></a></label></li>
+	
+					<li><label for="about"><a href="about.jsp"><fmt:message key="about" /></a></label></li>
 				</ul>
 			</nav>
-		</div>
-		
+		</div>		
 
 		<div class="well">
 			<form action="GUIServlet?action=display" method="POST">
-				
-				Are you sure you want to display your molecules ?<br>
-
-				<input type="submit" value="Yes">
-				or just go back to the 
+				<fmt:message key="confirmationDisplay" /><br>
+				<input type="submit" value="<fmt:message key="yes" />">
+				<fmt:message key="goBackToMenu" />
 				<a href="menu.jsp"> menu</a>
 			</form>
 			

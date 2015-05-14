@@ -4,7 +4,6 @@
 <%@ page import="org.xml_cml.schema.cml2.core.Molecule"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.io.PrintWriter"%>
-<%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
@@ -44,27 +43,25 @@
 
 		<!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
-		<div class="masthead">
+				<div class="masthead">
 			<h3 class="text-muted">Dancing Electron</h3>
-			<h4 class="text-muted">Display Molecule</h4>
+			<h4 class="text-muted"><fmt:message key="displayMolecule" /></h4>
 			<nav>
 				<ul class="nav nav-justified">
 					<li><a href="menu.jsp">Home</a></li>
-					<li><a href="createMolecule.jsp">Create Molecule</a></li>
-					<li><a href="displayMoleculeConfirmation.jsp">Display
-							Molecules</a></li>
-
-					<li><a href="about.jsp">About</a></li>
+					<li><label for="createMolecule"><a href="createMolecule.jsp"><fmt:message key="createMolecule" /></a></label></li>
+					<li><label for="displayMolecule"><a href="displayMoleculeConfirmation.jsp"><fmt:message key="displayMolecule" /></a></label></li>
+	
+					<li><label for="about"><a href="about.jsp"><fmt:message key="about" /></a></label></li>
 				</ul>
 			</nav>
 		</div>
-
 		<div class="well">
 
 			<!-- List of molecules here -->
 			<div class="panel panel-default">
 				<!-- Default panel contents -->
-				<div class="panel-heading">My molecules</div>
+				<div class="panel-heading"><fmt:message key="titleTab" /></div>
 
 				<!-- Table -->
 				<!-- 	<table>
@@ -80,20 +77,19 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Name</th>
-							<th>Role</th>
+							<th><fmt:message key="name" /></th>
+							<th><fmt:message key="role" /></th>
 						</tr>
 					</thead>
 					<tbody>
 						<%
-							List<Molecule> myMolecule = (List<Molecule>) request
-									.getAttribute("molecules");
-							for (int i = 0; i < myMolecule.size(); i++) {
-								Molecule molecule = myMolecule.get(i);
-								int nb = i+1;
-								out.println("<tr><td>" + nb + "</td><td>" + molecule.getTitle()
-										+ "</td><td>" + molecule.getRole() + "</td></tr>");
-							}
+							//List<Molecule> myMolecule = (List<Molecule>) request.getAttribute("molecules");
+							//for (int i = 0; i < myMolecule.size(); i++) {
+								//Molecule molecule = myMolecule.get(i);
+								//int nb = i+1;
+								//out.println("<tr><td>" + nb + "</td><td>" + molecule.getTitle()
+									//	+ "</td><td>" + molecule.getRole() + "</td></tr>");
+							//}
 						%>
 					</tbody>
 				</table>

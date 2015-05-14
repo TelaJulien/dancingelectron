@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.Timestamp"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
@@ -77,17 +76,16 @@
 
 		<!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
-		<div class="masthead">
+				<div class="masthead">
 			<h3 class="text-muted">Dancing Electron</h3>
-			<h4 class="text-muted">Create Molecule</h4>
+			<h4 class="text-muted"><fmt:message key="createMolecule" /></h4>
 			<nav>
 				<ul class="nav nav-justified">
 					<li><a href="menu.jsp">Home</a></li>
-					<li><a href="createMolecule.jsp">Create Molecule</a></li>
-					<li><a href="displayMoleculeConfirmation.jsp">Display
-							Molecules</a></li>
-
-					<li><a href="about.jsp">About</a></li>
+					<li><label for="createMolecule"><a href="#"><fmt:message key="createMolecule" /></a></label></li>
+					<li><label for="displayMolecule"><a href="displayMoleculeConfirmation.jsp"><fmt:message key="displayMolecule" /></a></label></li>
+	
+					<li><label for="about"><a href="about.jsp"><fmt:message key="about" /></a></label></li>
 				</ul>
 			</nav>
 		</div>
@@ -107,8 +105,8 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Name</th>
-								<th>Role</th>
+								<th><fmt:message key="name" /></th>
+								<th><fmt:message key="role" /></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -142,11 +140,11 @@
 
 							</tr>
 							<tr>
-								<th scope="row">Electron</th>
+								<th scope="row"><fmt:message key="electron" /></th>
 								<td><input type="text" name="moleculeElectron"></td>
 							</tr>
 							<tr>
-								<th scope="row">Bond</th>
+								<th scope="row"><fmt:message key="bond" /></th>
 								<td><input type="text" name="moleculeBond"></td>
 							</tr>
 						</tbody>
@@ -156,7 +154,7 @@
 
 				</div>
 				
-				<input type="submit" value="Create">
+				<input type="submit" value="<fmt:message key="create" />">
 			</form>
 
 

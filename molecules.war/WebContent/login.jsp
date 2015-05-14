@@ -37,16 +37,13 @@
 	<h1>Dancing Electron</h1>
 
 		<form class="form-signin">
-			<h2 class="form-signin-heading">Please sign in</h2>
-			 <input
-				type="text" id="inputUsername" class="form-control"
-				placeholder="Username" required autofocus> <label
-				for="inputPassword" class="sr-only">Password</label> <input
-				type="password" id="inputPassword" class="form-control"
-				placeholder="Password" required>
+			<h2><label for="pleaseSignIn" class="form-signin-heading"><fmt:message key="pleaseSignIn" /></label></h2>
 			
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
-				in</button>
+			<input type="text" id="username" class="form-control" placeholder="<fmt:message key="username" />" required autofocus> 
+			
+			<input type="password" id="inputPassword" class="form-control" placeholder="<fmt:message key="password" />" required>
+			
+			<button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key="signIn" /></button>
 		</form>
 
 	</div>

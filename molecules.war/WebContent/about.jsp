@@ -39,25 +39,24 @@
            Multiple lines will require custom code not provided by Bootstrap. -->
 		<div class="masthead">
 			<h3 class="text-muted">Dancing Electron</h3>
-			<h4 class="text-muted">Menu</h4>
+			<h4 class="text-muted"><fmt:message key="about" /></h4>
 			<nav>
 				<ul class="nav nav-justified">
-					<li><a href="#">Home</a></li>
-					<li><a href="createMolecule.jsp">Create Molecule</a></li>
-					<li><a href="displayMoleculeConfirmation.jsp">Display Molecules</a></li>
+					<li><a href="menu.jsp">Home</a></li>
+					<li><label for="createMolecule"><a href="createMolecule.jsp"><fmt:message key="createMolecule" /></a></label></li>
+					<li><label for="displayMolecule"><a href="displayMoleculeConfirmation.jsp"><fmt:message key="displayMolecule" /></a></label></li>
 	
-					<li><a href="about.jsp">About</a></li>
+					<li><label for="about"><a href="#"><fmt:message key="about" /></a></label></li>
 				</ul>
 			</nav>
 		</div>
-
 		<div class="well">
 			
-			<p class="lead">This application was designed for the PDS of the MIAGE's Master 1 of Créteil</p>
+			<p class="lead"><fmt:message key="aboutMessage" /></p>
 		</div>
 			<div class="well">
 			
-			<p class="lead">The team : Clément CARREAU, Daria RYAZANTSEVA and Julien TELA</p>
+			<p class="lead"><fmt:message key="team" /></p>
 		</div>
 
 		<!-- Site footer -->
