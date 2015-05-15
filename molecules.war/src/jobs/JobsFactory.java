@@ -12,6 +12,12 @@ public class JobsFactory {
 
 		case "display":
 			return new DisplayJob(request);
+		
+		case "update":
+			return new UpdateJob(request);
+			
+		case "delete":
+			return new DeleteJob(request);
 
 		default:
 			break;

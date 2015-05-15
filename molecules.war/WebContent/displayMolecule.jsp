@@ -79,6 +79,7 @@
 							<th>#</th>
 							<th><fmt:message key="name" /></th>
 							<th><fmt:message key="role" /></th>
+							
 						</tr>
 					</thead>
 					<tbody>
@@ -91,6 +92,21 @@
 									//	+ "</td><td>" + molecule.getRole() + "</td></tr>");
 							//}
 						%>
+						
+						<!-- Site footer -->
+						<tr><td>1</td><td>Water</td><td>Life</td>
+						
+						<td>
+							<form action="GUIServlet?action=update" method="POST">
+								<input type="submit" value="<fmt:message key="update" />">
+							</form>
+						</td>
+						
+						<td>
+							<form action="GUIServlet?action=delete" method="POST">
+								<input type="submit" value="<fmt:message key="delete" />">
+							</form>
+						</td></tr>
 					</tbody>
 				</table>
 			</div>

@@ -56,6 +56,7 @@
 							e.preventDefault();
 							$(this).parent('div').remove();
 							x--;
+							y--;	
 						})
 					});
 </script>
@@ -112,8 +113,8 @@
 						<tbody>
 							<tr>
 								<th scope="row"></th>
-								<td><input type="text" name="moleculeName"></td>
-								<td><input type="text" name="moleculeRole"></td>
+								<td><input type="text" name="moleculeName" required ></td>
+								<td><input type="text" name="moleculeRole" required ></td>
 							</tr>
 						</tbody>
 					</table>

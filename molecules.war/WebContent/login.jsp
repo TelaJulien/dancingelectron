@@ -39,7 +39,7 @@
 		<form class="form-signin">
 			<h2><label for="pleaseSignIn" class="form-signin-heading"><fmt:message key="pleaseSignIn" /></label></h2>
 			
-			<input type="text" id="username" class="form-control" placeholder="<fmt:message key="username" />" required autofocus> 
+			<input type="text" id="username" class="form-control" placeholder="<fmt:message key="username" />" required > 
 			
 			<input type="password" id="inputPassword" class="form-control" placeholder="<fmt:message key="password" />" required>
 			
