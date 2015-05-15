@@ -43,10 +43,10 @@
 			<nav>
 				<ul class="nav nav-justified">
 					<li><a href="menu.jsp">Home</a></li>
-					<li><label for="createMolecule"><a href="createMolecule.jsp"><fmt:message key="createMolecule" /></a></label></li>
-					<li><label for="displayMolecule"><a href="displayMoleculeConfirmation.jsp"><fmt:message key="displayMolecule" /></a></label></li>
+					<li><a  href="createMolecule.jsp"><fmt:message key="createMolecule" /></a></li>
+					<li><a  href="displayMoleculeConfirmation.jsp"><fmt:message key="displayMolecule" /></a></li>
 	
-					<li><label for="about"><a href="#"><fmt:message key="about" /></a></label></li>
+					<li><a  href="#"><fmt:message key="about" /></a></li>
 				</ul>
 			</nav>
 		</div>
