@@ -125,7 +125,7 @@
 
 						<tbody>
 							<tr data-name="test">
-								<th scope="row">Atom</th>
+								<th scope="row"><fmt:message key="atom" /></th>
 								<td>
 
 									<div class="input_fields_wrap">
@@ -158,11 +158,13 @@
 				<input type="submit" value="<fmt:message key="create" />">
 			</form>
 
-
-
-
-
 		</div>
+
+		<br>
+		<br>
+		<p align="center">
+		<img src="http://www.openschool.bc.ca/features/images/sc9/sc0931a_electrons_animated.gif">		
+		</p>
 
 		<!-- Site footer -->
 		<footer class="footer">

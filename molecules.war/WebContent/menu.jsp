@@ -60,6 +60,12 @@
 				<label for="createMoleculeToday"><a class="btn btn-lg btn-primary" href="createMolecule.jsp" role="button"><fmt:message key="createMoleculeToday" /></a></label>
 			</p>
 		</div>
+		
+		<br>
+		<br>
+		<p align="center">
+		<img src="http://www.openschool.bc.ca/features/images/sc9/sc0931a_electrons_animated.gif">		
+		</p>
 
 		<!-- Site footer -->
 		<footer class="footer">

@@ -57,7 +57,14 @@
 			<div class="well">
 			
 			<p class="lead"><fmt:message key="team" /></p>
-		</div>
+		
+		</div>	
+				<br>
+				<br>
+				<p align="center">
+				<img src="http://www.openschool.bc.ca/features/images/sc9/sc0931a_electrons_animated.gif">		
+				</p>
+		
 
 		<!-- Site footer -->
 		<footer class="footer">

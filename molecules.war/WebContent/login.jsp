@@ -46,6 +46,14 @@
 			<button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key="signIn" /></button>
 		</form>
 
+
+			
+				<br>
+				<br>
+				<p align="center">
+				<img src="http://www.openschool.bc.ca/features/images/sc9/sc0931a_electrons_animated.gif">		
+				</p>
+			
 	</div>
 	<!-- /container -->
 
