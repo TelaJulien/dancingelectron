@@ -1,8 +1,10 @@
+<%@page import="org.apache.activemq.store.jdbc.adapter.MySqlJDBCAdapter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="org.xml_cml.schema.cml2.core.Molecule"%>
 <%@ page import="java.util.List"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -27,28 +29,6 @@
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 <link href="CSS/styles.css" rel="stylesheet">
- <script type="text/javascript">
-        // Function for storing to cookie
-        function setCookie(c_name,value,exdays)
-        {
-            var exdate=new Date();
-            exdate.setDate(exdate.getDate() + exdays);
-            var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-            document.cookie=c_name + "=" + c_value;
-        }
-
-        // Called on form's `onsubmit`
-        function tosubmit() {
-            // Getting the value of your text input
-            var mytext = document.getElementById("mytext").value;
-
-            // Storing the value above into a cookie
-            setCookie("mytext", mytext, 300);
-
-            return true;
-        }
-
-    </script> 
 </head>
 
 <body>
@@ -102,15 +82,6 @@
 				<div class="panel-heading"><fmt:message key="titleTab" /></div>
 
 				<!-- Table -->
-				<!-- 	<table>
-					<c:forEach items="${TAREWEIGHT}" var="tareWeight" varStatus="loop">
-						<c:set var="barCode" value="${BARCODE[loop.index]}" />
-						<tr>
-							<td><c:out value="${tareWeight}" /></td>
-							<td><c:out value="${barCode}" /></td>
-						</tr>
-					</c:forEach>
-				</table> -->
 				<table class="table">
 					<thead>
 						<tr>
@@ -122,31 +93,36 @@
 					</thead>
 					<tbody>
 						<%
-							List<Molecule> myMolecule = (List<Molecule>) request.getAttribute("molecules");
+							// pour tester
+							Molecule mol1 = new Molecule();
+							Molecule mol2 = new Molecule();
+							List<Molecule> myMolecule = new ArrayList<Molecule>();
+							myMolecule.add(0, mol1);
+							myMolecule.add(1, mol2);
+							//fin test
+							//List<Molecule> myMolecule = (List<Molecule>) request.getAttribute("molecules");
 							for (int i = 0; i < myMolecule.size(); i++) {
 								Molecule molecule = myMolecule.get(i);
 								int nb = i+1;
 								out.println("<tr>");
-								out.println("<td>" + nb + "</td><td>" + molecule.getTitle()+ "</td><td>" + molecule.getRole() + "</td></tr>");
-								out.println("<td><form method='get'> action='upadteMolecule.jsp'");
-								out.println("<input type='hidden' name='"+ molecule.getId()+"' value='"+molecule.getId()+"'");
-								out.println("<input type='hidden' name='"+ molecule.getTitle()+"' value='"+molecule.getTitle()+"'");
-								out.println("<input type='hidden' name='"+ molecule.getRole()+"' value='"+molecule.getRole()+"'");
-								out.println("<input type='hidden' name='"+ molecule.getAtomArray()+"' value='"+molecule.getAtomArray()+"'");
-								out.println("<input type='hidden' name='"+ molecule.getElectron()+"' value='"+molecule.getElectron()+"'");
-								out.println("<input type='hidden' name='"+ molecule.getBondArray()+"' value='"+molecule.getBondArray()+"'");			
-								out.println("<input type='submit' value='Update'>");
-								out.println("</form></td>");
+								out.println("<td>" + nb + "</td><td>" + molecule.getTitle()+ "</td><td>" + molecule.getRole() + "</td>");
+								out.println("<td><form method='GET' action='updateMolecule.jsp'></td>");
+								out.println("<td><input type='hidden' name='"+ molecule.getId()+"' value='"+molecule.getId()+"'</td>");
+								out.println("<td><input type='hidden' name='"+ molecule.getTitle()+"' value='"+molecule.getTitle()+"'</td>");
+								out.println("<td><input type='hidden' name='"+ molecule.getRole()+"' value='"+molecule.getRole()+"'</td>");
+								out.println("<td><input type='hidden' name='"+ molecule.getAtomArray()+"' value='"+molecule.getAtomArray()+"'</td>");
+								out.println("<td><input type='hidden' name='"+ molecule.getElectron()+"' value='"+molecule.getElectron()+"'</td>");
+								out.println("<td><input type='hidden' name='"+ molecule.getBondArray()+"' value='"+molecule.getBondArray()+"'</td>");
+								out.println("<td><input type='image' id='updateImage' style='height:25px;width:25px;' src='http://cdn.flaticon.com/png/256/27869.png' /></td>");				
+								out.println("<td></form></td>");
 								
-								out.println("<td><form method='POST'> action='GUIServlet?action=delete'");
-								out.println("<input type='hidden' name='"+ molecule.getId()+"' value='"+molecule.getId()+"'");
-								out.println("<input type='submit' value='Delete'>");
-								out.println("</form></td>");		
+								out.println("<td><form method='POST' action='GUIServlet?action=delete'></td>");
+								out.println("<td><input type='hidden' name='"+ molecule.getId()+"' value='"+molecule.getId()+"'</td>");
+								out.println("<td><input type='image' id='deleteImage' style='height:25px;width:25px;' src='http://png-4.findicons.com/files/icons/1580/devine_icons_part_2/128/trash_recyclebin_empty_closed.png' /></td>");
+								out.println("<td></form></td>");		
 								out.println("</tr>");
 							}
 						%>
-						
-					</tbody>
 				</table>
 			</div>
 
