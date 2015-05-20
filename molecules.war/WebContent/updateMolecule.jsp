@@ -68,13 +68,6 @@
 
 	<div class="container">
 	
-	<form>
-            <select id="language" name="language" onchange="submit()">
-            	<option value="fr" ${language == 'fr' ? 'selected' : ''}>Français</option>
-                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-            </select>
-        </form>
-
 		<!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
 				<div class="masthead">
@@ -106,9 +99,23 @@
 						</thead>
 						<tbody>
 							<tr>
+							
 								<th scope="row"></th>
-								<td><input type="text" name="moleculeName" required ></td>
-								<td><input type="text" name="moleculeRole" required ></td>
+								<%
+									String[] authors = request.getParameterValues("author");
+									String moleculeTitle = request.getParameter("moleculeTitle");
+									String moleculeRole = request.getParameter("moleculeRole");
+									String[] moleculeAtom = request.getParameterValues("moleculeAtomArray");
+									String[] moleculeElectron = request.getParameterValues("moleculeListElectron");
+									String[] moleculeBond = request.getParameterValues("moleculeBondArray");
+									
+
+									//for (int i = 0; i < authors.length; ++i) {
+
+									//}
+								%>
+								<td><input type="text" value="<%=moleculeTitle%>" required ></td>
+								<td><input type="text" value="<%=moleculeRole%>" required ></td>
 							</tr>
 						</tbody>
 					</table>
@@ -125,7 +132,14 @@
 									<div class="input_fields_wrap">
 										<button class="add_field_button">Add More Fields</button>
 										<div>
-											<input type="text" name="moleculeAtom[0]">
+										<%
+										for (int i = 0 ; i < moleculeAtom.length ; ++i) {
+											
+										%>
+											<input type="text" name="moleculeAtom[0]" value="<%= moleculeAtom[i] %>">
+										<%
+											}
+										%>
 										</div>
 
 									</div> 
@@ -136,11 +150,29 @@
 							</tr>
 							<tr>
 								<th scope="row"><fmt:message key="electron" /></th>
-								<td><input type="text" name="moleculeElectron"></td>
+								<td>
+								<%
+										for (int i = 0 ; i < moleculeElectron.length ; ++i) {
+											
+										%>
+											<input type="text" name="moleculeElectron" value="<%= moleculeElectron[i] %>">
+										<%
+											}
+										%>
+								</td>
 							</tr>
 							<tr>
 								<th scope="row"><fmt:message key="bond" /></th>
-								<td><input type="text" name="moleculeBond"></td>
+								<td>
+										<%
+											for (int i = 0 ; i < moleculeBond.length ; ++i) {
+											
+										%>
+											<input type="text" name="moleculeBond" value="<%= moleculeBond[i] %>">
+										<%
+											}
+										%>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -149,7 +181,7 @@
 
 				</div>
 				
-				<input type="submit" value="<fmt:message key="create" />">
+				<input type="submit" value="<fmt:message key="update" />">
 			</form>
 
 		</div>

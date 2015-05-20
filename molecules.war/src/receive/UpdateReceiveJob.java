@@ -19,8 +19,8 @@ public class UpdateReceiveJob implements ReceiveJob {
 
 	@Override
 	public void execute() {
-		couple.setRequestDispatcher("/updateMolecule.jsp");
-		couple.getRequest().setAttribute("molecules", molecule);
+		couple.setRequestDispatcher("/resultAction.jsp");
+		couple.getRequest().setAttribute("message", "Molecule has been updated");
 	}
 
 }

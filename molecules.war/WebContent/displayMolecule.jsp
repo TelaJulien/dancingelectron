@@ -3,6 +3,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="org.xml_cml.schema.cml2.core.Molecule"%>
+<%@ page import="org.xml_cml.schema.cml2.core.AtomArray" %>
+<%@ page import="org.xml_cml.schema.cml2.core.Atom" %>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.io.PrintWriter"%>
@@ -97,6 +99,16 @@
 							Molecule mol1 = new Molecule();
 							Molecule mol2 = new Molecule();
 							List<Molecule> myMolecule = new ArrayList<Molecule>();
+							mol1.setTitle("Water");
+							mol1.setRole("To be drink");
+							
+							
+							Atom atom = new Atom();
+							atom.setTitle("Atom1");
+							AtomArray atomArray = new AtomArray();
+							atomArray.getAtom().add(atom);
+							
+							
 							myMolecule.add(0, mol1);
 							myMolecule.add(1, mol2);
 							//fin test
@@ -107,17 +119,17 @@
 								out.println("<tr>");
 								out.println("<td>" + nb + "</td><td>" + molecule.getTitle()+ "</td><td>" + molecule.getRole() + "</td>");
 								out.println("<td><form method='GET' action='updateMolecule.jsp'></td>");
-								out.println("<td><input type='hidden' name='"+ molecule.getId()+"' value='"+molecule.getId()+"'</td>");
-								out.println("<td><input type='hidden' name='"+ molecule.getTitle()+"' value='"+molecule.getTitle()+"'</td>");
-								out.println("<td><input type='hidden' name='"+ molecule.getRole()+"' value='"+molecule.getRole()+"'</td>");
-								out.println("<td><input type='hidden' name='"+ molecule.getAtomArray()+"' value='"+molecule.getAtomArray()+"'</td>");
-								out.println("<td><input type='hidden' name='"+ molecule.getElectron()+"' value='"+molecule.getElectron()+"'</td>");
-								out.println("<td><input type='hidden' name='"+ molecule.getBondArray()+"' value='"+molecule.getBondArray()+"'</td>");
+								out.println("<td><input type='hidden' name='moleculeId' value='"+molecule.getId()+"'</td>");
+								out.println("<td><input type='hidden' name='moleculeTitle' value='"+molecule.getTitle()+"'</td>");
+								out.println("<td><input type='hidden' name='moleculeRole' value='"+molecule.getRole()+"'</td>");
+								out.println("<td><input type='hidden' name='moleculeAtomArray' value='"+molecule.getAtomArray()+"'</td>");
+								out.println("<td><input type='hidden' name='moleculeListElectron' value='"+molecule.getElectron()+"'</td>");
+								out.println("<td><input type='hidden' name='moleculeBondArray' value='"+molecule.getBondArray()+"'</td>");
 								out.println("<td><input type='image' id='updateImage' style='height:25px;width:25px;' src='http://cdn.flaticon.com/png/256/27869.png' /></td>");				
 								out.println("<td></form></td>");
 								
 								out.println("<td><form method='POST' action='GUIServlet?action=delete'></td>");
-								out.println("<td><input type='hidden' name='"+ molecule.getId()+"' value='"+molecule.getId()+"'</td>");
+								out.println("<td><input type='hidden' name='molculeId' value='"+molecule.getId()+"'</td>");
 								out.println("<td><input type='image' id='deleteImage' style='height:25px;width:25px;' src='http://png-4.findicons.com/files/icons/1580/devine_icons_part_2/128/trash_recyclebin_empty_closed.png' /></td>");
 								out.println("<td></form></td>");		
 								out.println("</tr>");
