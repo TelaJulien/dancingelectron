@@ -90,15 +90,9 @@
 				</ul>
 			</nav>
 		</div>
-		<%
-			java.util.Date date = new java.util.Date();
-			Timestamp ts;
-		%>
 
 		<div class="well">
 			<form action="GUIServlet?action=creation" method="POST">
-				<input type="hidden" id="thisField" name="inputName"
-					value="<%ts = new Timestamp(date.getTime());%>">
 				<div class="panel panel-default">
 
 					<!-- Table -->

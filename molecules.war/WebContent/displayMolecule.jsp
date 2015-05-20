@@ -27,7 +27,28 @@
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 <link href="CSS/styles.css" rel="stylesheet">
+ <script type="text/javascript">
+        // Function for storing to cookie
+        function setCookie(c_name,value,exdays)
+        {
+            var exdate=new Date();
+            exdate.setDate(exdate.getDate() + exdays);
+            var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+            document.cookie=c_name + "=" + c_value;
+        }
 
+        // Called on form's `onsubmit`
+        function tosubmit() {
+            // Getting the value of your text input
+            var mytext = document.getElementById("mytext").value;
+
+            // Storing the value above into a cookie
+            setCookie("mytext", mytext, 300);
+
+            return true;
+        }
+
+    </script> 
 </head>
 
 <body>
@@ -57,7 +78,24 @@
 			</nav>
 		</div>
 		<div class="well">
-
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<form action="GUIServlet?action=redo" method="POST">
+					<input type="submit" value="<fmt:message key="redo" />" class="pull-right">
+				</form>
+					<form action="GUIServlet?action=undo" method="POST">
+					<input type="submit" value="<fmt:message key="undo" />" class="pull-right">				
+				</form>
+				<h4>Last actions</h4>
+			</div>
+			<div class="panel-body">
+			
+				<hr>
+		
+			</div>
+		</div>
+		</div>
+		<div class="well">
 			<!-- List of molecules here -->
 			<div class="panel panel-default">
 				<!-- Default panel contents -->
@@ -84,29 +122,30 @@
 					</thead>
 					<tbody>
 						<%
-							//List<Molecule> myMolecule = (List<Molecule>) request.getAttribute("molecules");
-							//for (int i = 0; i < myMolecule.size(); i++) {
-								//Molecule molecule = myMolecule.get(i);
-								//int nb = i+1;
-								//out.println("<tr><td>" + nb + "</td><td>" + molecule.getTitle()
-									//	+ "</td><td>" + molecule.getRole() + "</td></tr>");
-							//}
+							List<Molecule> myMolecule = (List<Molecule>) request.getAttribute("molecules");
+							for (int i = 0; i < myMolecule.size(); i++) {
+								Molecule molecule = myMolecule.get(i);
+								int nb = i+1;
+								out.println("<tr>");
+								out.println("<td>" + nb + "</td><td>" + molecule.getTitle()+ "</td><td>" + molecule.getRole() + "</td></tr>");
+								out.println("<td><form method='get'> action='upadteMolecule.jsp'");
+								out.println("<input type='hidden' name='"+ molecule.getId()+"' value='"+molecule.getId()+"'");
+								out.println("<input type='hidden' name='"+ molecule.getTitle()+"' value='"+molecule.getTitle()+"'");
+								out.println("<input type='hidden' name='"+ molecule.getRole()+"' value='"+molecule.getRole()+"'");
+								out.println("<input type='hidden' name='"+ molecule.getAtomArray()+"' value='"+molecule.getAtomArray()+"'");
+								out.println("<input type='hidden' name='"+ molecule.getElectron()+"' value='"+molecule.getElectron()+"'");
+								out.println("<input type='hidden' name='"+ molecule.getBondArray()+"' value='"+molecule.getBondArray()+"'");			
+								out.println("<input type='submit' value='Update'>");
+								out.println("</form></td>");
+								
+								out.println("<td><form method='POST'> action='GUIServlet?action=delete'");
+								out.println("<input type='hidden' name='"+ molecule.getId()+"' value='"+molecule.getId()+"'");
+								out.println("<input type='submit' value='Delete'>");
+								out.println("</form></td>");		
+								out.println("</tr>");
+							}
 						%>
 						
-						<!-- Site footer -->
-						<tr><td>1</td><td>Water</td><td>Life</td>
-						
-						<td>
-							<form action="GUIServlet?action=update" method="POST">
-								<input type="submit" value="<fmt:message key="update" />">
-							</form>
-						</td>
-						
-						<td>
-							<form action="GUIServlet?action=delete" method="POST">
-								<input type="submit" value="<fmt:message key="delete" />">
-							</form>
-						</td></tr>
 					</tbody>
 				</table>
 			</div>

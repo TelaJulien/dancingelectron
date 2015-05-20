@@ -18,6 +18,12 @@ public class JobsFactory {
 			
 		case "delete":
 			return new DeleteJob(request);
+		
+		case "undo":
+			return new UndoJob(request);
+		
+		case "redo":
+			return new RedoJob(request);
 
 		default:
 			break;
