@@ -18,7 +18,6 @@ public class DeleteJob implements Job {
 	@Override
 	public ClientQuery execute() {
 		
-		//POUR UPDATE IL FAUT ID MOLECULE
 		ClientQuery clientQuery = new ClientQuery();
 
 		// get ID of the molecule which will be deleted
@@ -30,6 +29,9 @@ public class DeleteJob implements Job {
 		
 		action.setMoleculeID(moleculeId);
 		
+		
+		//int userID = clientQuery.getUserID();
+		//clientQuery.setUserID(userID);
 		clientQuery.setUserID(1);
 		clientQuery.setAction(action);
 

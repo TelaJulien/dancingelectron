@@ -19,6 +19,10 @@ public class DisplayJob implements Job {
 
 		// creation de l'action (CRUD + undo + redo)
 		DisplayAction action = new DisplayAction();
+		
+		//int userID = clientQuery.getUserID();
+		//clientQuery.setUserID(userID);
+		
 		clientQuery.setUserID(1);
 		clientQuery.setAction(action);
 

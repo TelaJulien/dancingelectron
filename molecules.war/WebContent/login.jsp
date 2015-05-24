@@ -41,7 +41,7 @@
 			
 			<input type="text" id="username" class="form-control" placeholder="<fmt:message key="username" />" required > 
 			
-			<input type="password" id="inputPassword" class="form-control" placeholder="<fmt:message key="password" />" required>
+			<input type="password" id="password" class="form-control" placeholder="<fmt:message key="password" />" required>
 			
 			<button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key="signIn" /></button>
 		</form>

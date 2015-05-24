@@ -30,35 +30,76 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 <script>
-	$(document)
-			.ready(
+	$(document).ready(
 					function() {
-						var max_fields = 10; //maximum input boxes allowed
-						var wrapper = $(".input_fields_wrap"); //Fields wrapper
-						var add_button = $(".add_field_button"); //Add button ID
+						var max_atom = 10; //maximum input boxes allowed
+						var max_electron = 10; //maximum input boxes allowed
+						var max_bond = 10; //maximum input boxes allowed
+						var atom = $(".input_fields_atom"); //Fields wrapper
+						var electron = $(".input_fields_electron"); //Fields wrapper
+						var bond = $(".input_fields_bond"); //Fields wrapper
+						
+						var add_button_atom = $(".add_field_button_atom"); //Add button ID
+						var add_button_electron = $(".add_field_button_electron"); //Add button ID
+						var add_button_bond = $(".add_field_button_bond"); //Add button ID
 
-						var y = 1;
-						var x = 1; //initlal text box count
-						$(add_button)
-								.click(
+						var yAtom = 1;
+						var xAtom = 1; //initlal text box count
+						var yElectron = 1;
+						var xElectron = 1; //initlal text box count
+						var yBond = 1;
+						var xBond = 1; //initlal text box count
+						$(add_button_atom).click(
 										function(e) { //on add input button click
 											e.preventDefault();
-											if (x < max_fields) { //max input box allowed
-												x++; //text box increment
-												$(wrapper)
-														.append(
-																'<div><input type="text" name="moleculeAtom['+y+']"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
-												y++;
+											if (xAtom < max_atom) { //max input box allowed
+												xAtom++; //text box increment
+												$(atom).append(
+																'<div><input type="text" name="moleculeAtom['+yAtom+']"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+												yAtom++;
 											}
 										});
+						$(add_button_electron).click(
+								function(e) { //on add input button click
+									e.preventDefault();
+									if (xElectron < max_electron) { //max input box allowed
+										xElectron++; //text box increment
+										$(electron).append(
+														'<div><input type="text" name="moleculeElectron['+yElectron+']"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+										yElectron++;
+									}
+								});
+						$(add_button_bond).click(
+								function(e) { //on add input button click
+									e.preventDefault();
+									if (xBond < max_bond) { //max input box allowed
+										xBond++; //text box increment
+										$(bond).append(
+														'<div><input type="text" name="moleculeBond['+yBond+']"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+										yBond++;
+									}
+								});
 
-						$(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
+						$(atom).on("click", ".remove_field", function(e) { //user click on remove text
 							e.preventDefault();
 							$(this).parent('div').remove();
-							x--;
-							y--;	
-						})
-					});
+							xAtom--;
+							yAtom--;	
+						});
+						$(electron).on("click", ".remove_field", function(e) { //user click on remove text
+							e.preventDefault();
+							$(this).parent('div').remove();
+							xElectron--;
+							yElectron--;	
+						});
+						$(bond).on("click", ".remove_field", function(e) { //user click on remove text
+							e.preventDefault();
+							$(this).parent('div').remove();
+							xBond--;
+							yBond--;	
+						});
+					}	
+	);
 </script>
 
 
@@ -105,7 +146,7 @@
 									String[] authors = request.getParameterValues("author");
 									String moleculeTitle = request.getParameter("moleculeTitle");
 									String moleculeRole = request.getParameter("moleculeRole");
-									String[] moleculeAtom = request.getParameterValues("moleculeAtomArray");
+									String[] moleculeAtom = request.getParameterValues("moleculeAtom");
 									String[] moleculeElectron = request.getParameterValues("moleculeListElectron");
 									String[] moleculeBond = request.getParameterValues("moleculeBondArray");
 									
@@ -129,14 +170,15 @@
 								<th scope="row"><fmt:message key="atom" /></th>
 								<td>
 
-									<div class="input_fields_wrap">
-										<button class="add_field_button">Add More Fields</button>
+									<div class="input_fields_atom">
+										<button class="add_field_button_atom"><fmt:message key="addAtom" /></button>
 										<div>
 										<%
 										for (int i = 0 ; i < moleculeAtom.length ; ++i) {
 											
 										%>
 											<input type="text" name="moleculeAtom[0]" value="<%= moleculeAtom[i] %>">
+											<br>
 										<%
 											}
 										%>
@@ -151,6 +193,9 @@
 							<tr>
 								<th scope="row"><fmt:message key="electron" /></th>
 								<td>
+								<div class="input_fields_electron">
+										<button class="add_field_button_electron"><fmt:message key="addElectron" /></button>
+										<div>
 								<%
 										for (int i = 0 ; i < moleculeElectron.length ; ++i) {
 											
@@ -159,11 +204,16 @@
 										<%
 											}
 										%>
+										</div>
+										</div>
 								</td>
 							</tr>
 							<tr>
 								<th scope="row"><fmt:message key="bond" /></th>
 								<td>
+								<div class="input_fields_bond">
+										<button class="add_field_button_bond"><fmt:message key="addBond" /></button>
+										<div>
 										<%
 											for (int i = 0 ; i < moleculeBond.length ; ++i) {
 											
@@ -172,6 +222,8 @@
 										<%
 											}
 										%>
+										</div>
+										</div>
 								</td>
 							</tr>
 						</tbody>

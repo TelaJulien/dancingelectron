@@ -105,9 +105,14 @@
 							
 							Atom atom = new Atom();
 							atom.setTitle("Atom1");
+							Atom atom2 = new Atom();
+							atom2.setTitle("Atom2");
 							AtomArray atomArray = new AtomArray();
 							atomArray.getAtom().add(atom);
+							atomArray.getAtom().add(atom2);
 							
+							mol1.setAtomArray(atomArray);
+							mol2.setAtomArray(atomArray);
 							
 							myMolecule.add(0, mol1);
 							myMolecule.add(1, mol2);
@@ -122,7 +127,12 @@
 								out.println("<td><input type='hidden' name='moleculeId' value='"+molecule.getId()+"'</td>");
 								out.println("<td><input type='hidden' name='moleculeTitle' value='"+molecule.getTitle()+"'</td>");
 								out.println("<td><input type='hidden' name='moleculeRole' value='"+molecule.getRole()+"'</td>");
-								out.println("<td><input type='hidden' name='moleculeAtomArray' value='"+molecule.getAtomArray()+"'</td>");
+								
+								List<Atom> atoms = molecule.getAtomArray().getAtom();
+								for(int j =0; j<atoms.size(); j++){
+									out.println("<td><input type='hidden' name='moleculeAtom' value='"+molecule.getAtomArray().getAtom().get(j).getTitle()+"'</td>");
+								}
+
 								out.println("<td><input type='hidden' name='moleculeListElectron' value='"+molecule.getElectron()+"'</td>");
 								out.println("<td><input type='hidden' name='moleculeBondArray' value='"+molecule.getBondArray()+"'</td>");
 								out.println("<td><input type='image' id='updateImage' style='height:25px;width:25px;' src='http://cdn.flaticon.com/png/256/27869.png' /></td>");				

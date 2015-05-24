@@ -59,6 +59,9 @@ public class CreateJob implements Job {
 		// creation de l'action (CRUD + undo + redo)
 		CreateAction action = new CreateAction();
 		action.setMolecule(molecule);
+		
+		//int userID = clientQuery.getUserID();
+		//clientQuery.setUserID(userID);
 		clientQuery.setUserID(1);
 		clientQuery.setAction(action);
 

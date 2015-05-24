@@ -3,6 +3,7 @@ package jobs;
 import javax.servlet.http.HttpServletRequest;
 
 import generated.ClientQuery;
+import generated.LoginAction;
 
 public class LogInJob implements Job {
 	private HttpServletRequest request;
@@ -13,8 +14,19 @@ public class LogInJob implements Job {
 
 	@Override
 	public ClientQuery execute() {
-		// TODO Auto-generated method stub
-		return null;
+		ClientQuery clientQuery = new ClientQuery();
+		
+		//get les infos (username & password)
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		
+		//creation de l'action
+		LoginAction action = new LoginAction();
+		action.setLogin(username);
+		action.setPassword(password);
+
+		
+		return clientQuery;
 	}
 
 }
