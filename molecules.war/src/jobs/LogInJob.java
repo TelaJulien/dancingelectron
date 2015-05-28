@@ -1,6 +1,7 @@
 package jobs;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import generated.ClientQuery;
 import generated.LoginAction;
@@ -19,12 +20,13 @@ public class LogInJob implements Job {
 		//get les infos (username & password)
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
+				
 		//creation de l'action
 		LoginAction action = new LoginAction();
 		action.setLogin(username);
 		action.setPassword(password);
 
+		
 		
 		return clientQuery;
 	}

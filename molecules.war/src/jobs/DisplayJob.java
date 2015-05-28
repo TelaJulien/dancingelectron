@@ -4,6 +4,7 @@ import generated.ClientQuery;
 import generated.DisplayAction;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class DisplayJob implements Job {
 	private String xml;
@@ -20,9 +21,9 @@ public class DisplayJob implements Job {
 		// creation de l'action (CRUD + undo + redo)
 		DisplayAction action = new DisplayAction();
 		
-		//int userID = clientQuery.getUserID();
-		//clientQuery.setUserID(userID);
-		
+		HttpSession session = request.getSession();
+		//int userId = Integer.valueOf((String) session.getAttribute("userId"));
+		//clientQuery.setUserID(userId);
 		clientQuery.setUserID(1);
 		clientQuery.setAction(action);
 

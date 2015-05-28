@@ -5,6 +5,8 @@
 <%@ page import="org.xml_cml.schema.cml2.core.Molecule"%>
 <%@ page import="org.xml_cml.schema.cml2.core.AtomArray" %>
 <%@ page import="org.xml_cml.schema.cml2.core.Atom" %>
+<%@ page import="org.xml_cml.schema.cml2.core.Electron" %>
+<%@ page import="org.xml_cml.schema.cml2.core.Bond" %>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.io.PrintWriter"%>
@@ -96,28 +98,28 @@
 					<tbody>
 						<%
 							// pour tester
-							Molecule mol1 = new Molecule();
-							Molecule mol2 = new Molecule();
-							List<Molecule> myMolecule = new ArrayList<Molecule>();
-							mol1.setTitle("Water");
-							mol1.setRole("To be drink");
+							//Molecule mol1 = new Molecule();
+							//Molecule mol2 = new Molecule();
+							//List<Molecule> myMolecule = new ArrayList<Molecule>();
+							//mol1.setTitle("Water");
+							//mol1.setRole("To be drink");
 							
 							
-							Atom atom = new Atom();
-							atom.setTitle("Atom1");
-							Atom atom2 = new Atom();
-							atom2.setTitle("Atom2");
-							AtomArray atomArray = new AtomArray();
-							atomArray.getAtom().add(atom);
-							atomArray.getAtom().add(atom2);
+							//Atom atom = new Atom();
+							//atom.setTitle("Atom1");
+							//Atom atom2 = new Atom();
+							//atom2.setTitle("Atom2");
+							//AtomArray atomArray = new AtomArray();
+							//atomArray.getAtom().add(atom);
+							//atomArray.getAtom().add(atom2);
 							
-							mol1.setAtomArray(atomArray);
-							mol2.setAtomArray(atomArray);
+							//mol1.setAtomArray(atomArray);
+							//mol2.setAtomArray(atomArray);
 							
-							myMolecule.add(0, mol1);
-							myMolecule.add(1, mol2);
+							//myMolecule.add(0, mol1);
+							//myMolecule.add(1, mol2);
 							//fin test
-							//List<Molecule> myMolecule = (List<Molecule>) request.getAttribute("molecules");
+							List<Molecule> myMolecule = (List<Molecule>) request.getAttribute("molecules");
 							for (int i = 0; i < myMolecule.size(); i++) {
 								Molecule molecule = myMolecule.get(i);
 								int nb = i+1;
@@ -132,9 +134,16 @@
 								for(int j =0; j<atoms.size(); j++){
 									out.println("<td><input type='hidden' name='moleculeAtom' value='"+molecule.getAtomArray().getAtom().get(j).getTitle()+"'</td>");
 								}
-
-								out.println("<td><input type='hidden' name='moleculeListElectron' value='"+molecule.getElectron()+"'</td>");
-								out.println("<td><input type='hidden' name='moleculeBondArray' value='"+molecule.getBondArray()+"'</td>");
+								
+								List<Electron> electrons = molecule.getElectron();
+								for(int k= 0 ; k<electrons.size() ; k++){
+									out.println("<td><input type='hidden' name='moleculeListElectron' value='"+molecule.getElectron()+"'</td>");
+								}
+								
+								List<Bond> bonds = molecule.getBondArray().getBond();
+								for (int l = 0 ; l<bonds.size() ; l++){
+									out.println("<td><input type='hidden' name='moleculeBondArray' value='"+molecule.getBondArray()+"'</td>");
+								}
 								out.println("<td><input type='image' id='updateImage' style='height:25px;width:25px;' src='http://cdn.flaticon.com/png/256/27869.png' /></td>");				
 								out.println("<td></form></td>");
 								

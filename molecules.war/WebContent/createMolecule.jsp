@@ -54,7 +54,7 @@
 											if (xAtom < max_atom) { //max input box allowed
 												xAtom++; //text box increment
 												$(atom).append(
-																'<div><input type="text" name="moleculeAtom['+yAtom+']"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+																'<div><input type="text" name="moleculeAtom"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
 												yAtom++;
 											}
 										});
@@ -64,7 +64,7 @@
 									if (xElectron < max_electron) { //max input box allowed
 										xElectron++; //text box increment
 										$(electron).append(
-														'<div><input type="text" name="moleculeElectron['+yElectron+']"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+														'<div><input type="text" name="moleculeElectron"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
 										yElectron++;
 									}
 								});
@@ -74,7 +74,7 @@
 									if (xBond < max_bond) { //max input box allowed
 										xBond++; //text box increment
 										$(bond).append(
-														'<div><input type="text" name="moleculeBond['+yBond+']"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+														'<div><input type="text" name="moleculeBond"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
 										yBond++;
 									}
 								});
@@ -165,7 +165,7 @@
 									<div class="input_fields_atom">
 										<button class="add_field_button_atom"><fmt:message key="addAtom" /></button>
 										<div>
-											<input type="text" name="moleculeAtom[0]">
+											<input type="text" name="moleculeAtom">
 										</div>
 
 									</div> 
@@ -180,7 +180,7 @@
 									<div class="input_fields_electron">
 										<button class="add_field_button_electron"><fmt:message key="addElectron" /></button>
 										<div>
-											<input type="text" name="moleculeElectron[0]">
+											<input type="text" name="moleculeElectron">
 										</div>
 									</div>
 								</td>
@@ -191,7 +191,7 @@
 									<div class="input_fields_bond">
 										<button class="add_field_button_bond"><fmt:message key="addBond" /></button>
 										<div>
-											<input type="text" name="moleculeBond[0]">
+											<input type="text" name="moleculeBond">
 										</div>
 									</div>
 								</td>

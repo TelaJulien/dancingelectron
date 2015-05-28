@@ -30,12 +30,12 @@ public class DeleteJob implements Job {
 		action.setMoleculeID(moleculeId);
 		
 		
-		//int userID = clientQuery.getUserID();
-		//clientQuery.setUserID(userID);
+		HttpSession session = request.getSession();
+		//int userId = Integer.valueOf((String) session.getAttribute("userId"));
+		//clientQuery.setUserID(userId);
 		clientQuery.setUserID(1);
 		clientQuery.setAction(action);
 
-		HttpSession session = request.getSession();
 		session.setAttribute("MOLECULEID", moleculeId);
 
 		return clientQuery;
