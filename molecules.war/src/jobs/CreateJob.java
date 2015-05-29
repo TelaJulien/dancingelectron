@@ -71,15 +71,17 @@ public class CreateJob implements Job {
 		action.setMolecule(molecule);
 		
 		HttpSession session = request.getSession();
-		//int userId = Integer.valueOf((String) session.getAttribute("userId"));
-		//clientQuery.setUserID(userId);
-		clientQuery.setUserID(1);
+		int userId = Integer.valueOf((String) session.getAttribute("userID"));
+		clientQuery.setUserID(userId);
+		//clientQuery.setUserID(1);
 		clientQuery.setAction(action);
 
 		
 		session.setAttribute("MOLECULENAME", moleculeName);
 		session.setAttribute("MOLECULEROLE", moleculeRole);
 
+		System.out.println("User ID : " + clientQuery.getUserID());
+		
 		return clientQuery;
 	}
 }

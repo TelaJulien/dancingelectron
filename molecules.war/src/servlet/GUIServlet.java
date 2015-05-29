@@ -43,10 +43,10 @@ public class GUIServlet extends HttpServlet implements OnMessageReceived {
 		super();
 
 		// creation de la file de messages
-//		messagesManager = new MessagesManager();
-//		messagesManager.setMessageListener(this);
-//
-//		management = new HashMap<String, ThreadRequestCouple>();
+		messagesManager = new MessagesManager();
+		messagesManager.setMessageListener(this);
+
+		management = new HashMap<String, ThreadRequestCouple>();
 
 	}
 
@@ -54,8 +54,7 @@ public class GUIServlet extends HttpServlet implements OnMessageReceived {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String action = request.getParameter("action");
 		Job job = JobsFactory.build(action, request);
@@ -104,17 +103,17 @@ public class GUIServlet extends HttpServlet implements OnMessageReceived {
 
 		ClientQuery query = null;
 		try {
-			query = (ClientQuery) JAXBUtils.unmarshall(textMessage.getText(),
-					ClientQuery.class);
+			query = (ClientQuery) JAXBUtils.unmarshall(textMessage.getText(), ClientQuery.class);
 		} catch (JMSException e) {
 			e.printStackTrace();
 		}
 
-		
-		Action action =  query.getAction();
-		ReceiveJob job = ReceiveJobFactory.build(couple, action);
-		job.execute();
-		
+		ReceiveJob job = ReceiveJobFactory.build(couple, query);
+		if (job != null) {
+			job.execute();
+		}else{
+			couple.setRequestDispatcher("/login.jsp");
+		}
 		Thread thread = couple.getThread();
 		synchronized (thread) {
 			thread.notify();

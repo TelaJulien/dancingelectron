@@ -125,30 +125,30 @@
 								int nb = i+1;
 								out.println("<tr>");
 								out.println("<td>" + nb + "</td><td>" + molecule.getTitle()+ "</td><td>" + molecule.getRole() + "</td>");
-								out.println("<td><form method='GET' action='updateMolecule.jsp'></td>");
-								out.println("<td><input type='hidden' name='moleculeId' value='"+molecule.getId()+"'</td>");
-								out.println("<td><input type='hidden' name='moleculeTitle' value='"+molecule.getTitle()+"'</td>");
-								out.println("<td><input type='hidden' name='moleculeRole' value='"+molecule.getRole()+"'</td>");
+								out.println("<td><form method='POST' action='updateMolecule.jsp'></td>");
+								out.println("<td><input type='hidden' name='moleculeId' value='"+molecule.getId()+"' style='display: none'></td>");
+								out.println("<td><input type='hidden' name='moleculeTitle' value='"+molecule.getTitle()+"' style='display: none'></td>");
+								out.println("<td><input type='hidden' name='moleculeRole' value='"+molecule.getRole()+"' style='display: none'></td>");
 								
 								List<Atom> atoms = molecule.getAtomArray().getAtom();
 								for(int j =0; j<atoms.size(); j++){
-									out.println("<td><input type='hidden' name='moleculeAtom' value='"+molecule.getAtomArray().getAtom().get(j).getTitle()+"'</td>");
+									out.println("<td><input type='hidden' name='moleculeAtom' value='"+molecule.getAtomArray().getAtom().get(j).getTitle()+"' style='display: none'></td>");
 								}
 								
 								List<Electron> electrons = molecule.getElectron();
 								for(int k= 0 ; k<electrons.size() ; k++){
-									out.println("<td><input type='hidden' name='moleculeListElectron' value='"+molecule.getElectron()+"'</td>");
+									out.println("<td><input type='hidden' name='moleculeListElectron' value='"+molecule.getElectron().get(k).getTitle()+"' style='display: none'></td>");
 								}
 								
 								List<Bond> bonds = molecule.getBondArray().getBond();
 								for (int l = 0 ; l<bonds.size() ; l++){
-									out.println("<td><input type='hidden' name='moleculeBondArray' value='"+molecule.getBondArray()+"'</td>");
+									out.println("<td><input type='hidden' name='moleculeBondArray' value='"+molecule.getBondArray().getBond().get(l).getTitle()+"' style='display: none'></td>");
 								}
 								out.println("<td><input type='image' id='updateImage' style='height:25px;width:25px;' src='http://cdn.flaticon.com/png/256/27869.png' /></td>");				
 								out.println("<td></form></td>");
 								
 								out.println("<td><form method='POST' action='GUIServlet?action=delete'></td>");
-								out.println("<td><input type='hidden' name='molculeId' value='"+molecule.getId()+"'</td>");
+								out.println("<td><input type='hidden' name='moleculeId' value='"+molecule.getId()+"' style='display: none'></td>");
 								out.println("<td><input type='image' id='deleteImage' style='height:25px;width:25px;' src='http://png-4.findicons.com/files/icons/1580/devine_icons_part_2/128/trash_recyclebin_empty_closed.png' /></td>");
 								out.println("<td></form></td>");		
 								out.println("</tr>");

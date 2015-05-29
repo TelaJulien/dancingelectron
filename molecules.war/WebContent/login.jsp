@@ -36,12 +36,12 @@
         </form>
 	<h1>Dancing Electron</h1>
 
-		<form class="form-signin">
+		<form class="form-signin" action="GUIServlet?action=login" method="POST">
 			<h2><label for="pleaseSignIn" class="form-signin-heading"><fmt:message key="pleaseSignIn" /></label></h2>
 			
-			<input type="text" id="username" class="form-control" placeholder="<fmt:message key="username" />" required > 
+			<input type="text" name="username" class="form-control" placeholder="<fmt:message key="username" />" required > 
 			
-			<input type="password" id="password" class="form-control" placeholder="<fmt:message key="password" />" required>
+			<input type="password" name="password" class="form-control" placeholder="<fmt:message key="password" />" required>
 			
 			<button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key="signIn" /></button>
 		</form>

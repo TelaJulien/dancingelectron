@@ -6,10 +6,10 @@ import javax.servlet.http.HttpSession;
 import generated.ClientQuery;
 import generated.LoginAction;
 
-public class LogInJob implements Job {
+public class LoginJob implements Job {
 	private HttpServletRequest request;
 
-	public LogInJob(HttpServletRequest request) {
+	public LoginJob(HttpServletRequest request) {
 		this.request = request;
 	}
 
@@ -26,7 +26,10 @@ public class LogInJob implements Job {
 		action.setLogin(username);
 		action.setPassword(password);
 
+		System.out.println("Username : " + username);
+		System.out.println("Password : " + password);
 		
+		clientQuery.setAction(action);
 		
 		return clientQuery;
 	}

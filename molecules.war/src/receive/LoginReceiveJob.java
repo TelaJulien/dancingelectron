@@ -4,30 +4,30 @@ package receive;
 
 import javax.servlet.http.HttpSession;
 
-import generated.Action;
 import generated.LoginAction;
 import management.ThreadRequestCouple;
 
 
-public class LogInReceiveJob implements ReceiveJob {
+public class LoginReceiveJob implements ReceiveJob {
 	private ThreadRequestCouple couple;
-	private LoginAction action;
-
-	public LogInReceiveJob(ThreadRequestCouple couple, LoginAction action) {
+	private int userID;
+	public LoginReceiveJob(ThreadRequestCouple couple, int userID) {
 		this.couple = couple;
-		this.action = action;
+		this.userID = userID;
 	}
 
 	@Override
 	public void execute() {
 		
 		// faire le if avec OK et erreur donc retour à la page précédente avec ça : <a href="Javascript:history.go(-1)">
-		couple.setRequestDispatcher("/menu.jsp");
-		
-		int userId = Integer.valueOf(couple.getRequest().getParameter("userId"));
-		
+
+		System.out.println("receive : "+userID);
+		if(userID >= 0){
 		HttpSession session =couple.getRequest().getSession();
-		session.setAttribute("userId", userId);
+		session.setAttribute("userID", userID);
+		couple.setRequestDispatcher("/menu.jsp");
+		}
+		else couple.setRequestDispatcher("/login.jsp");
 		
 		
 	}

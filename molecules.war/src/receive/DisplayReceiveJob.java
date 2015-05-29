@@ -15,6 +15,10 @@ public class DisplayReceiveJob implements ReceiveJob {
 	public DisplayReceiveJob(ThreadRequestCouple couple, DisplayAction action) {
 		this.couple = couple;
 		molecules = action.getMolecule();
+		
+		for(Molecule molecule : molecules){
+			System.out.println("id: "+molecule.getId());
+		}
 	}
 
 	@Override

@@ -53,8 +53,13 @@
 
 		<!-- Jumbotron -->
 		<div class="well">
+			<%
+				String message = request.getParameter("message");
 			
-			<p class="lead"><%=request.getAttribute("message")%></p>
+			%>
+			<p class="lead">
+				<label ><fmt:message key="<%=message%>" /></label>
+			</p>
 			
 		</div>
 

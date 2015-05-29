@@ -24,6 +24,9 @@ public class JobsFactory {
 		
 		case "redo":
 			return new RedoJob(request);
+			
+		case "login":
+			return new LoginJob(request);
 
 		default:
 			break;

@@ -29,6 +29,7 @@ public class UpdateJob implements Job {
 		// get Name and Role of the updated molecule
 		String moleculeName = request.getParameter("moleculeName");
 		String moleculeRole = request.getParameter("moleculeRole");
+		int moleculeId = Integer.valueOf(request.getParameter("moleculeId"));
 
 		// Atom Array
 		//String moleculeAtom = request.getParameter("moleculeAtom[0]");
@@ -66,16 +67,19 @@ public class UpdateJob implements Job {
 		// creation de l'action (CRUD + undo + redo)
 		UpdateAction action = new UpdateAction();
 		action.setMolecule(molecule);
+		action.setMoleculeID(moleculeId);
 		
 		HttpSession session = request.getSession();
-		//int userId = Integer.valueOf((String) session.getAttribute("userId"));
-		//clientQuery.setUserID(userId);
-		clientQuery.setUserID(1);
+		int userId = Integer.valueOf(session.getAttribute("userID").toString());
+		clientQuery.setUserID(userId);
+		//clientQuery.setUserID(1);
 		clientQuery.setAction(action);
 
 		//session.setAttribute("MOLECULENAME", moleculeName);
 		//session.setAttribute("MOLECULEROLE", moleculeRole);
 
+		System.out.println("User ID : " + clientQuery.getUserID());
+		
 		return clientQuery;
 	}
 

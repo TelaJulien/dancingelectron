@@ -22,9 +22,9 @@ public class DisplayJob implements Job {
 		DisplayAction action = new DisplayAction();
 		
 		HttpSession session = request.getSession();
-		//int userId = Integer.valueOf((String) session.getAttribute("userId"));
-		//clientQuery.setUserID(userId);
-		clientQuery.setUserID(1);
+		int userId = Integer.valueOf( session.getAttribute("userID").toString());
+		clientQuery.setUserID(userId);
+		//clientQuery.setUserID(1);
 		clientQuery.setAction(action);
 
 		System.out.println("User ID : " + clientQuery.getUserID());

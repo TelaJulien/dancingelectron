@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
+
 import generated.ClientQuery;
 import generated.DeleteAction;
 
@@ -21,7 +22,7 @@ public class DeleteJob implements Job {
 		ClientQuery clientQuery = new ClientQuery();
 
 		// get ID of the molecule which will be deleted
-		int moleculeId = Integer.valueOf(request.getParameter("moleculeId"));
+		int moleculeId = Integer.valueOf(request.getParameter("moleculeID"));
 
 
 		// creation de l'action (CRUD + undo + redo)
@@ -37,6 +38,8 @@ public class DeleteJob implements Job {
 		clientQuery.setAction(action);
 
 		session.setAttribute("MOLECULEID", moleculeId);
+		
+		System.out.println("User ID : " + clientQuery.getUserID());
 
 		return clientQuery;
 	}

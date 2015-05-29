@@ -1,5 +1,7 @@
 package receive;
 
+import java.io.UnsupportedEncodingException;
+
 import management.ThreadRequestCouple;
 
 public class CreateReceiveJob implements ReceiveJob {
@@ -13,7 +15,9 @@ public class CreateReceiveJob implements ReceiveJob {
 	@Override
 	public void execute() {
 		couple.setRequestDispatcher("/resultAction.jsp");
-		couple.getRequest().setAttribute("message", "Molecule has been created");
+		couple.getRequest().setAttribute("message", "createMsg");
+		
+
 	}
 
 }
